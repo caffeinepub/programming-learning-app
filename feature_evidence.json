@@ -1,0 +1,45 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-audit-and-fix-the-credential-input-field-in-loginpage-tsx-to-ensure-it-is-a-plain-text-input-with-no-numeric-only-restrictions-explicitly-verify-and-remove-any-occurrence-of-type-number-inputmode-numeric-pattern-attributes-onkeypress-onkeydown-handlers-or-onchange-filters-that-strip-or-block-non-numeric-characters-the-input-must-accept-and-display-alphanumeric-strings-such-as-stu001-stu003-tch001-and-adm001-without-modification",
+      "featureTitle": "Audit and fix the credential input field in LoginPage.tsx to ensure it is a plain text input with no numeric-only restrictions. Explicitly verify and remove any occurrence of type='number', inputMode='numeric', pattern attributes, onKeyPress/onKeyDown handlers, or onChange filters that strip or block non-numeric characters. The input must accept and display alphanumeric strings such as STU001, STU003, TCH001, and ADM001 without modification.",
+      "files": [
+        "frontend/src/pages/LoginPage.tsx"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "camera@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-the-uselogin-ts-hook-to-confirm-the-credential-string-e-g-stu003-is-correctly-converted-to-the-expected-bigint-or-matched-format-before-being-passed-to-the-backend-login-method-ensure-the-conversion-logic-correctly-handles-alphanumeric-credential-strings-and-does-not-fail-silently-when-the-credential-contains-letters",
+      "featureTitle": "Audit the useLogin.ts hook to confirm the credential string (e.g., 'STU003') is correctly converted to the expected bigint or matched format before being passed to the backend login method. Ensure the conversion logic correctly handles alphanumeric credential strings and does not fail silently when the credential contains letters.",
+      "files": [
+        "frontend/src/hooks/useLogin.ts"
+      ],
+      "components": [
+        "authorization@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "camera@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

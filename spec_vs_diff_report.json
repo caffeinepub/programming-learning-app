@@ -1,0 +1,31 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T15:53:04.365Z",
+  "summary": "Both REQ-12 and REQ-13 appear to be addressed by the diff. LoginPage.tsx uses type='text' with a parseCredential helper that handles alphanumeric strings, and useLogin.ts validates credentials locally using the numeric portion extracted from the alphanumeric string. The implementation covers all major acceptance criteria.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Local credential validation bypass of backend: useLogin.ts completely bypasses the backend login call and validates credentials against hardcoded local sets (VALID_STUDENT_IDS, VALID_TEACHER_IDS, VALID_ADMIN_IDS), never calling the backend actor.",
+      "reason": "The build request only asked to fix the credential input to accept alphanumeric characters and ensure the hook correctly maps alphanumeric credentials to the backend's expected format. It did not request replacing backend calls with local validation logic.",
+      "evidence": [
+        "frontend/src/hooks/useLogin.ts"
+      ]
+    },
+    {
+      "description": "credentialRaw field added to LoginParams interface and passed to the mutation",
+      "reason": "The build request did not request adding a credentialRaw parameter to the login params. The requirement only asked to fix alphanumeric handling, not to pass the raw string separately alongside the bigint.",
+      "evidence": [
+        "frontend/src/hooks/useLogin.ts",
+        "frontend/src/pages/LoginPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/hooks/useLogin.ts",
+    "frontend/src/pages/LoginPage.tsx",
+    "project_state.json"
+  ]
+}

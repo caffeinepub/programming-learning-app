@@ -1,0 +1,49 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T15:53:04.370Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-12",
+        "summary": "Audit and fix the credential input field in LoginPage.tsx to ensure it is a plain text input with no numeric-only restrictions. Explicitly verify and remove any occurrence of type='number', inputMode='numeric', pattern attributes, onKeyPress/onKeyDown handlers, or onChange filters that strip or block non-numeric characters. The input must accept and display alphanumeric strings such as STU001, STU003, TCH001, and ADM001 without modification.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/LoginPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/LoginPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Audit the useLogin.ts hook to confirm the credential string (e.g., 'STU003') is correctly converted to the expected bigint or matched format before being passed to the backend login method. Ensure the conversion logic correctly handles alphanumeric credential strings and does not fail silently when the credential contains letters.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useLogin.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useLogin.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/hooks/useLogin.ts",
+    "frontend/src/pages/LoginPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

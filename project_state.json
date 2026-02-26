@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "SmartAttend is a College Attendance Management Mobile Web App (PWA-ready, mobile-responsive) targeting Students, Teachers, and Admins. The scope now includes: role-based login (Roll No. for Students, Teacher ID for Teachers, Admin ID for Admins) matched against sample data, camera capture for Teachers as visual confirmation when marking attendance, and browser Geolocation API to display approximate GPS coordinates during attendance marking. Also includes Student attendance dashboard, Teacher attendance marking, Admin overview with charts, sample data, and dark mode toggle.",
+  "architectural_notes": [
+    "Mobile-responsive PWA-ready web app (React + TypeScript); no native Android build",
+    "Sample data pre-loaded in frontend state; no backend/REST API in prototype",
+    "Login uses simple ID/Roll No. matching against sample data (no JWT/OTP/email auth)",
+    "Camera access via browser MediaDevices API for photo capture (no face recognition)",
+    "Geolocation via browser Geolocation API (approximate only, not guaranteed precise)"
+  ],
+  "known_issues": [
+    "GPS, push notifications, face recognition, OTP/email auth, and native Android features are out of scope for this platform",
+    "Login input field not accepting alphabetic characters, blocking credential entry (e.g., STU001, TCH001, ADM001)"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-role-selection-screen-as-the-app-entry-point-display-three-cards-student-teacher-admin-with-icons-and-labels-clicking-a-card-navigates-to-that-role-s-dashboard-no-authentication-required",
+      "title": "Create a Role Selection screen as the app entry point. Display three cards — Student, Teacher, Admin — with icons and labels. Clicking a card navigates to that role's dashboard. No authentication required.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-student-dashboard-that-shows-a-profile-section-name-roll-number-course-semester-from-sample-data-subject-wise-attendance-cards-with-percentage-and-a-horizontal-progress-bar-for-each-subject-and-a-color-indicator-green-75-red-75",
+      "title": "Build a Student Dashboard that shows: a profile section (name, roll number, course, semester from sample data), subject-wise attendance cards with percentage and a horizontal progress bar for each subject, and a color indicator (green ≥75%, red <75%).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-teacher-panel-that-displays-a-class-list-of-students-and-allows-the-teacher-to-mark-each-student-as-present-absent-or-late-using-toggle-buttons-show-a-summary-count-of-present-absent-late-at-the-top-after-marking",
+      "title": "Build a Teacher Panel that displays a class list of students and allows the teacher to mark each student as Present, Absent, or Late using toggle buttons. Show a summary count of Present/Absent/Late at the top after marking.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-admin-panel-showing-total-student-count-total-teacher-count-total-subjects-and-overall-attendance-percentage-as-stat-cards-include-a-bar-chart-showing-attendance-percentage-per-subject-using-sample-data",
+      "title": "Build an Admin Panel showing: total student count, total teacher count, total subjects, and overall attendance percentage as stat cards. Include a bar chart showing attendance percentage per subject using sample data.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-dark-mode-toggle-button-accessible-from-every-role-dashboard-the-toggle-should-switch-the-entire-app-between-light-and-dark-color-schemes-and-persist-the-selection-for-the-session",
+      "title": "Add a dark mode toggle button accessible from every role dashboard. The toggle should switch the entire app between light and dark color schemes and persist the selection for the session.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-professional-mobile-first-visual-theme-deep-navy-and-white-color-scheme-with-teal-cyan-accents-card-based-layout-with-subtle-shadows-clear-sans-serif-typography-and-a-top-navigation-bar-with-back-to-role-select-and-dark-mode-toggle-enforce-this-theme-consistently-across-all-screens",
+      "title": "Apply a clean, professional mobile-first visual theme: deep navy and white color scheme with teal/cyan accents, card-based layout with subtle shadows, clear sans-serif typography, and a top navigation bar with back-to-role-select and dark mode toggle. Enforce this theme consistently across all screens.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-role-based-login-page-as-the-new-app-entry-point-before-reaching-any-dashboard-users-must-select-their-role-student-teacher-or-admin-and-enter-a-credential-roll-number-for-students-teacher-id-for-teachers-admin-id-for-admins-validate-the-entered-credential-against-the-existing-sample-data-in-the-backend-on-success-navigate-to-the-appropriate-dashboard-on-failure-display-an-inline-error-message-the-existing-roleselection-screen-should-be-replaced-or-integrated-as-the-first-step-of-this-login-flow",
+      "title": "Add a role-based login page as the new app entry point. Before reaching any dashboard, users must select their role (Student, Teacher, or Admin) and enter a credential: Roll Number for Students, Teacher ID for Teachers, Admin ID for Admins. Validate the entered credential against the existing sample data in the backend. On success, navigate to the appropriate dashboard. On failure, display an inline error message. The existing RoleSelection screen should be replaced or integrated as the first step of this login flow.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-camera-capture-feature-to-the-teacher-panel-when-marking-attendance-for-a-student-the-teacher-should-be-able-to-open-the-device-camera-via-the-browser-s-mediadevices-api-take-a-snapshot-and-see-a-thumbnail-of-the-captured-photo-displayed-alongside-that-student-s-attendance-record-as-visual-confirmation-the-camera-should-open-in-a-modal-or-inline-panel-and-close-after-capture",
+      "title": "Add a camera capture feature to the Teacher Panel. When marking attendance for a student, the teacher should be able to open the device camera via the browser's MediaDevices API, take a snapshot, and see a thumbnail of the captured photo displayed alongside that student's attendance record as visual confirmation. The camera should open in a modal or inline panel and close after capture.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-the-browser-geolocation-api-into-the-teacher-panel-attendance-flow-when-the-teacher-saves-or-submits-attendance-for-a-session-fetch-the-device-s-approximate-gps-coordinates-latitude-and-longitude-using-navigator-geolocation-and-display-them-as-a-text-confirmation-e-g-location-recorded-28-6139-n-77-2090-e-on-the-teacher-panel-show-a-loading-indicator-while-fetching-and-a-graceful-fallback-message-if-geolocation-is-unavailable-or-denied",
+      "title": "Integrate the browser Geolocation API into the Teacher Panel attendance flow. When the teacher saves or submits attendance for a session, fetch the device's approximate GPS coordinates (latitude and longitude) using navigator.geolocation and display them as a text confirmation (e.g., 'Location recorded: 28.6139° N, 77.2090° E') on the Teacher Panel. Show a loading indicator while fetching and a graceful fallback message if geolocation is unavailable or denied.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-credential-input-field-on-the-login-page-so-it-accepts-alphanumeric-characters-letters-and-numbers-currently-the-field-blocks-alphabet-input-preventing-users-from-typing-credentials-like-stu001-tch001-or-adm001-remove-any-numeric-only-restriction-e-g-inputmode-numeric-type-number-or-pattern-filters-that-strip-letters-and-replace-with-a-plain-text-input-that-accepts-the-full-credential-format-the-backend-login-mutation-already-accepts-a-string-credential-so-no-backend-change-is-needed",
+      "title": "Fix the credential input field on the Login Page so it accepts alphanumeric characters (letters and numbers). Currently the field blocks alphabet input, preventing users from typing credentials like STU001, TCH001, or ADM001. Remove any numeric-only restriction (e.g., inputMode='numeric', type='number', or pattern filters that strip letters) and replace with a plain text input that accepts the full credential format. The backend login mutation already accepts a string credential, so no backend change is needed.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-fix-the-credential-input-field-in-loginpage-tsx-to-ensure-it-is-a-plain-text-input-with-no-numeric-only-restrictions-explicitly-verify-and-remove-any-occurrence-of-type-number-inputmode-numeric-pattern-attributes-onkeypress-onkeydown-handlers-or-onchange-filters-that-strip-or-block-non-numeric-characters-the-input-must-accept-and-display-alphanumeric-strings-such-as-stu001-stu003-tch001-and-adm001-without-modification",
+      "title": "Audit and fix the credential input field in LoginPage.tsx to ensure it is a plain text input with no numeric-only restrictions. Explicitly verify and remove any occurrence of type='number', inputMode='numeric', pattern attributes, onKeyPress/onKeyDown handlers, or onChange filters that strip or block non-numeric characters. The input must accept and display alphanumeric strings such as STU001, STU003, TCH001, and ADM001 without modification.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-the-uselogin-ts-hook-to-confirm-the-credential-string-e-g-stu003-is-correctly-converted-to-the-expected-bigint-or-matched-format-before-being-passed-to-the-backend-login-method-ensure-the-conversion-logic-correctly-handles-alphanumeric-credential-strings-and-does-not-fail-silently-when-the-credential-contains-letters",
+      "title": "Audit the useLogin.ts hook to confirm the credential string (e.g., 'STU003') is correctly converted to the expected bigint or matched format before being passed to the backend login method. Ensure the conversion logic correctly handles alphanumeric credential strings and does not fail silently when the credential contains letters.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Role selection screen (Student / Teacher / Admin)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Student Dashboard: subject-wise attendance with progress bars and profile section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Teacher Panel: mark attendance (Present/Absent/Late) for a class list",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Admin Panel: basic overview of students, teachers, and attendance stats with chart",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Pre-loaded sample data so the app looks realistic",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Dark mode toggle",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Build a backend actor that stores sample data in-memory: a list of subjects with attendance records per student, a list of students, a list of teachers, and department/attendance summary stats. Expose simple query functions to read this data by role.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Role-based login page: Students log in with Roll No., Teachers with Teacher ID, Admins with Admin ID — matched against sample data",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Camera access for Teachers to capture a photo as visual confirmation when marking attendance",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Browser Geolocation API integration to display approximate GPS coordinates (lat/long) when marking attendance",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "SmartAttend",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

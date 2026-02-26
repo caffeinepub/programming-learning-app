@@ -1,0 +1,68 @@
+{
+  "kind": "build_request",
+  "title": "Fix login credential input to accept alphanumeric characters (retry)",
+  "projectName": "SmartAttend",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "Audit and fix the credential input field in LoginPage.tsx to ensure it is a plain text input with no numeric-only restrictions. Explicitly verify and remove any occurrence of type='number', inputMode='numeric', pattern attributes, onKeyPress/onKeyDown handlers, or onChange filters that strip or block non-numeric characters. The input must accept and display alphanumeric strings such as STU001, STU003, TCH001, and ADM001 without modification.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "i put STU003 this roll no. but its again showing invalid roll no. please fix it",
+          "yes pls try again and fix it this problem asap"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The credential input field in LoginPage.tsx uses type='text' with no inputMode='numeric' or inputMode='decimal'.",
+        "No onKeyPress, onKeyDown, or onChange handler strips or blocks alphabetic characters.",
+        "No pattern attribute limits input to digits only.",
+        "Typing STU003 into the field displays 'STU003' exactly as typed.",
+        "Submitting STU003 as a Student credential succeeds and navigates to the Student Dashboard.",
+        "Submitting TCH001 as a Teacher credential succeeds and navigates to the Teacher Panel.",
+        "Submitting ADM001 as an Admin credential succeeds and navigates to the Admin Panel.",
+        "An invalid credential still shows an inline error message without navigating away."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Audit the useLogin.ts hook to confirm the credential string (e.g., 'STU003') is correctly converted to the expected bigint or matched format before being passed to the backend login method. Ensure the conversion logic correctly handles alphanumeric credential strings and does not fail silently when the credential contains letters.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2"
+        ],
+        "quotes": [
+          "i put STU003 this roll no. but its again showing invalid roll no. please fix it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "useLogin.ts does not crash or return an error when the credential string contains letters.",
+        "The hook correctly maps the alphanumeric credential to the backend's expected format.",
+        "A valid credential like STU003 passed through the hook results in a successful backend login response."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files listed under frontend.immutablePaths.",
+    "Do not change the backend login logic or data schema.",
+    "Do not alter any dashboard or panel components unrelated to the login flow."
+  ],
+  "nonGoals": [
+    "Adding new authentication methods or Internet Identity integration.",
+    "Changing the visual design or theme of the login page.",
+    "Modifying the backend sample data or actor logic.",
+    "Adding new student, teacher, or admin records."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
